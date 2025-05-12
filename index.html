@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';font-src 'self' https://cdn.jsdelivr.net data:;img-src 'self' data:;script-src 'self' https://cdn.jsdelivr.net;">
     <title>School Result Portal</title>
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome Icons -->
@@ -39,7 +40,9 @@
                 <form id="pinForm">
                     <div class="mb-3">
                         <label for="pin" class="form-label">Enter Scratch Card PIN</label>
-                        <input type="text" class="form-control" id="pin" placeholder="e.g., 12AB-34CD-56EF" required>
+                        <input type="text" id="pin" pattern="[A-Z0-9-]{12}" title="12-character alphanumeric PIN (e.g., ABCD-1234-EF56)"required>
+                        <!-- index.html -->
+                         
                     </div>
                     <button type="submit" class="btn btn-primary w-100">View Results</button>
                 </form>
@@ -49,6 +52,12 @@
             </div>
         </div>
     </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+       <div class="loading-spinner"></div>
+    </div>
+
+    <div class="toast" id="toast"></div>
         <!-- Footer -->
     <footer class="footer mt-5 py-3 bg-light">
         <div class="container">
@@ -73,6 +82,7 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    
+    <script type="module" src="script.js"></script>
 </body>
 </html>

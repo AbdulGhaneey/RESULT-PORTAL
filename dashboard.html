@@ -27,6 +27,17 @@
                 </ul>
             </div>
         </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+      <span class="nav-link" id="parentEmail"></span>
+    </li>
+  </ul>
+  <li class="nav-item">
+           <button class="btn btn-danger" onclick="logout()">Logout</button>
+        </li>
+</div>
     </nav>
 
     <div class="container mt-5">
@@ -46,6 +57,8 @@
                         <div class="col-md-6">
                             <input type="text" class="form-control" id="wardPin" 
                                    placeholder="Scratch Card PIN" required>
+                            <!-- dashboard.html -->
+                                    
                         </div>
                         <div class="col-12">
                             <button type="submit" class="btn btn-success">
@@ -62,6 +75,13 @@
             </div>
         </div>
     </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+       <div class="loading-spinner"></div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
 
     <!-- Footer -->
     <footer class="footer mt-5 py-3 bg-light">
@@ -88,7 +108,27 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+     <script>
+  // Check if parent is logged in
+  document.addEventListener('DOMContentLoaded', () => {
+    const parentEmail = localStorage.getItem('currentParent');
+    
+    // Redirect to login if not authenticated
+    if (!parentEmail) {
+      window.location.href = 'login.html';
+    }
+    
+    // Show parent's email in navbar
+    document.getElementById('parentEmail').textContent = parentEmail;
+  });
+
+  // Logout function
+  function logout() {
+    localStorage.removeItem('currentParent');
+    window.location.href = 'login.html';
+  }
+</script>
+    <script type="module" src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

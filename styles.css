@@ -1,0 +1,123 @@
+/* Shared Styles */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.card {
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.login-card, .payment-card, .result-card {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Result Table Styling */
+.table {
+    margin-top: 20px;
+}
+
+.table th {
+    background-color: #e9ecef;
+}
+
+/* Custom Alert Styling */
+.alert-danger {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Focus states for accessibility */
+input:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    border-color: #80bdff;
+}
+
+/* Footer Styles */
+.footer {
+    border-top: 1px solid #dee2e6;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to bottom */
+}
+
+.footer h5 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.footer ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: #6c757d;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Ensure content doesn't hide behind footer */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Dashboard Specific Styles */
+.add-ward {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+}
+
+.ward-card {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.ward-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.ward-actions {
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+/* Navbar Styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+/* Responsive Design */
+@media (max-width: 576px) {
+    .card {
+        margin: 20px;
+    }
+}

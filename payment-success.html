@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head as payment.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <!-- Add these links -->
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Reuse navbar -->
-    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">School Results</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="payment.html"><i class="fas fa-credit-card"></i> Buy Card</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
     <div class="container mt-5">
         <div class="card shadow">
             <div class="card-header bg-success text-white">
                 <h3 class="mb-0"><i class="fas fa-check-circle"></i> Payment Successful!</h3>
             </div>
             <div class="card-body">
-                <h5>Your Scratch Card PINs:</h5>
+                <h5 class="mb-4">Your Scratch Card PINs:</h5>
                 <div id="pinList" class="list-group mb-4"></div>
                 <a href="dashboard.html" class="btn btn-primary w-100">
                     <i class="fas fa-users"></i> View Dashboard
@@ -21,22 +43,57 @@
         </div>
     </div>
 
-    <!-- Reuse footer -->
-
-    <script>
-        // Display purchased PINs
-        const urlParams = new URLSearchParams(window.location.search);
-        const pins = urlParams.get("pins")?.split(",") || [];
-        
-        const pinList = document.getElementById("pinList");
-        pins.forEach(pin => {
-            pinList.innerHTML += `
-                <div class="list-group-item">
-                    <i class="fas fa-ticket-alt me-2"></i>
-                    <code>${pin}</code>
+    <!-- Reuse Footer -->
+    <footer class="footer mt-5 py-3 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Contact Support</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i>support@yourschool.edu.ng</li>
+                        <li><i class="fas fa-phone me-2"></i>+234 812 345 6789</li>
+                    </ul>
                 </div>
-            `;
-        });
-    </script>
+                <div class="col-md-6">
+                    <h5>Help Desk</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none"><i class="fas fa-question-circle me-2"></i>FAQs</a></li>
+                        <li><a href="#" class="text-decoration-none"><i class="fas fa-comments me-2"></i>Live Chat</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-3 text-muted">
+                <small>&copy; 2024 Your School Name. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add Bootstrap JS -->
+     <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pinsParam = urlParams.get('pins');
+    
+    if (!pinsParam) {
+        document.getElementById("pinList").innerHTML = `
+            <div class="alert alert-danger">
+                No PINs found. Please contact support.
+            </div>
+        `;
+        return;
+    }
+
+    const pins = pinsParam.split(',');
+    const pinList = document.getElementById("pinList");
+    
+    pinList.innerHTML = pins.map(pin => `
+        <div class="list-group-item">
+            <i class="fas fa-ticket-alt me-2"></i>
+            <code class="text-success">${pin}</code>
+        </div>
+    `).join('');
+});
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

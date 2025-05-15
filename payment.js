@@ -53,3 +53,54 @@ function generatePIN() {
     }
     return pin;
 }
+
+// payment.js
+function showToast(message, type = 'error') {
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `
+    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+    ${message}
+  `;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => toast.remove(), 5000);
+}
+
+// payment.js
+document.addEventListener("DOMContentLoaded", () => {
+    const paymentForm = document.getElementById("paymentForm");
+    
+    if (paymentForm) {
+        paymentForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            // Existing payment processing logic
+            const quantity = parseInt(document.getElementById("quantity").value);
+            // ... rest of your payment code ...
+        });
+    }
+});
+
+// payment.js
+document.addEventListener("DOMContentLoaded", () => {
+  // Toast function
+  function showToast(message, type = 'error') {
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `
+      <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+      ${message}
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 5000);
+  }
+
+  // Payment form logic
+  const paymentForm = document.getElementById("paymentForm");
+  if (paymentForm) {
+    paymentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      // ... rest of payment code ...
+    });
+  }
+});
